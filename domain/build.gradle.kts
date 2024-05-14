@@ -1,4 +1,6 @@
 dependencies {
+    implementation(project(":support:auth-jwt"))
+
     implementation("org.springframework.boot:spring-boot-starter")
 }
 

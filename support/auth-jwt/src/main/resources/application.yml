@@ -1,0 +1,3 @@
+jwt:
+  secret: fdflsjhflkwejfblkjhvuixochvuhsofiuesafbidsfab223411
+  token-validity-in-seconds: 240000
