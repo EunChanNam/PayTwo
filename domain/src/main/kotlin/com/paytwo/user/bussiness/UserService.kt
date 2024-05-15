@@ -16,6 +16,6 @@ class UserService(
     }
 
     fun login(username: String, password: String): String {
-        return authManger.login(username, password)
+        return authManger.authenticate(username, password)
     }
 }

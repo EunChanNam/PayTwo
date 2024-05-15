@@ -1,8 +1,8 @@
-package user.entity
+package com.paytwo.user.entity
 
 import com.paytwo.user.model.User
+import com.paytwo.user.support.BaseEntity
 import jakarta.persistence.Entity
-import user.support.BaseEntity
 
 @Entity
 class UserEntity(

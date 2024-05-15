@@ -1,7 +1,7 @@
-package user.repository
+package com.paytwo.user.repository
 
+import com.paytwo.user.entity.UserEntity
 import org.springframework.data.jpa.repository.JpaRepository
-import user.entity.UserEntity
 
 interface UserEntityRepository : JpaRepository<UserEntity, Long> {
 

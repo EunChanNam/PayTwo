@@ -1,4 +1,4 @@
-package user.support
+package com.paytwo.user.support
 
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing

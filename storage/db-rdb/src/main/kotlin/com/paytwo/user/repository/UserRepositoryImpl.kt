@@ -1,9 +1,10 @@
-package user.repository
+package com.paytwo.user.repository
 
+import com.paytwo.user.entity.UserEntity
 import com.paytwo.user.model.User
-import com.paytwo.user.repository.UserRepository
-import user.entity.UserEntity
+import org.springframework.stereotype.Repository
 
+@Repository
 class UserRepositoryImpl(
     private val userEntityRepository: UserEntityRepository
 ) : UserRepository {

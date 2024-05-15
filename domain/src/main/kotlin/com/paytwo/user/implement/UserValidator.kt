@@ -10,7 +10,7 @@ class UserValidator(
 ) {
 
     fun validateUsernameDuplication(username: String) {
-        if (userRepository.findByUsername(username) == null) {
+        if (userRepository.findByUsername(username) != null) {
             throw DomainException("이미 존재하는 username 입니다", 400)
         }
     }

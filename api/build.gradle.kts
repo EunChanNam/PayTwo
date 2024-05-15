@@ -1,16 +1,17 @@
 val swaggerVersion = "2.1.0"
 
 dependencies {
+    // DB
+    runtimeOnly("com.h2database:h2")
+
     // Module
-    implementation(project(":domain"))
     runtimeOnly(project(":storage:db-rdb"))
     runtimeOnly(project(":storage:db-nosql"))
+    runtimeOnly(project(":support:common-dependency"))
+    implementation(project(":domain"))
 
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$swaggerVersion")
-
-    // testFixtures
-    //    testImplementation(testFixtures(project(":infra")))
 }
 
 kotlin {
