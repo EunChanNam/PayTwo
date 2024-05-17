@@ -28,7 +28,7 @@ class AuthorizationArgumentResolver(
         val httpServletRequest = webRequest.getNativeRequest(HttpServletRequest::class.java)
             ?: throw IllegalArgumentException("요청 오류입니다")
 
-        val token = httpServletRequest.getHeader(HttpHeaders.AUTHORIZATION)
+        val token = httpServletRequest.getHeader(HttpHeaders.AUTHORIZATION) ?: throw IllegalArgumentException("인증이 필요합니다")
         tokenProvider.validateToken(token)
         return tokenProvider.extractUser(token)
     }

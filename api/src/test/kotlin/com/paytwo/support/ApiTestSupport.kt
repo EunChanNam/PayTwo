@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.paytwo.PaytwoApiApplication
 import com.paytwo.user.request.LoginRequest
 import com.paytwo.user.request.SignUpRequest
+import jakarta.annotation.PostConstruct
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
@@ -27,18 +28,18 @@ abstract class ApiTestSupport {
         return objectMapper!!.writeValueAsString(target)
     }
 
-    //    @PostConstruct
+    @PostConstruct
     fun setUpUser() {
+        mockMvc ?: throw IllegalArgumentException("mockMvc is null")
         // 캐싱해서 단 한번만 호출
         if (accessToken != null) {
             return
         }
 
-        println("hello world")
-        val signUpRequest: SignUpRequest = SignUpRequest("name", "username", "password123@", true)
+        val signUpRequest = SignUpRequest("name", "username", "password123@", true)
         mockMvc?.perform(
             MockMvcRequestBuilders
-                .post("/api/users")
+                .post("/v1/users")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(toJson(signUpRequest))
         )
@@ -46,7 +47,7 @@ abstract class ApiTestSupport {
         val loginRequest = LoginRequest("username", "password123@")
         val loginResult = mockMvc?.perform(
             MockMvcRequestBuilders
-                .post("/api/auth/login")
+                .post("/v1/users/login")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(toJson(loginRequest))
         )?.andReturn()

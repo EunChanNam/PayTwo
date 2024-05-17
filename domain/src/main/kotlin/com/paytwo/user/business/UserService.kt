@@ -1,4 +1,4 @@
-package com.paytwo.user.bussiness
+package com.paytwo.user.business
 
 import com.paytwo.user.implement.AuthManger
 import com.paytwo.user.implement.UserManager

@@ -1,7 +1,7 @@
 package com.paytwo.user
 
 import com.paytwo.support.ApiResponse
-import com.paytwo.user.bussiness.UserService
+import com.paytwo.user.business.UserService
 import com.paytwo.user.request.LoginRequest
 import com.paytwo.user.request.SignUpRequest
 import org.springframework.http.ResponseEntity

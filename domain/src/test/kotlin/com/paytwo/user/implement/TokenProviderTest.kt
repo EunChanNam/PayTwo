@@ -1,6 +1,7 @@
 package com.paytwo.user.implement
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.paytwo.JwtProvider
 import com.paytwo.support.error.DomainException
 import com.paytwo.user.model.AuthUser
@@ -18,7 +19,10 @@ import org.mockito.kotlin.any
 class TokenProviderTest {
 
     private val jwtProvider: JwtProvider = Mockito.mock(JwtProvider::class.java)
-    private val tokenProvider: TokenProvider = TokenProvider(jwtProvider, ObjectMapper())
+    private val tokenProvider: TokenProvider = TokenProvider(
+        jwtProvider,
+        ObjectMapper().registerModule(KotlinModule.Builder().build())
+    )
 
     @Test
     @DisplayName("[인증 토큰을 발급한다]")

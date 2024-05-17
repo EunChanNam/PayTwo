@@ -1,4 +1,4 @@
-package com.paytwo.user.support
+package com.paytwo.support
 
 import jakarta.persistence.Column
 import jakarta.persistence.GeneratedValue
