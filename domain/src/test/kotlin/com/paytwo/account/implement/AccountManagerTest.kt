@@ -3,9 +3,9 @@ package com.paytwo.account.implement
 import com.paytwo.account.model.Account
 import com.paytwo.account.repository.AccountRepository
 import com.paytwo.support.error.DomainException
-import org.assertj.core.api.Assertions.*
+import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.DisplayName
-
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.InjectMocks
@@ -18,10 +18,11 @@ import org.mockito.kotlin.given
 @DisplayName("[AccountManager 테스트]")
 class AccountManagerTest {
 
-    @Mock
-    private lateinit var accountRepository: AccountRepository
     @InjectMocks
     private lateinit var accountManager: AccountManager
+
+    @Mock
+    private lateinit var accountRepository: AccountRepository
 
     @Test
     @DisplayName("계좌를 생성한다")

@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 
 @SpringBootTest(classes = [PaytwoApiApplication::class])
 @AutoConfigureMockMvc
-abstract class ApiTestSupport {
+abstract class ApiTestSupport : TestContainerSupport() {
 
     @Autowired
     protected var mockMvc: MockMvc? = null
@@ -26,6 +26,21 @@ abstract class ApiTestSupport {
 
     protected fun toJson(target: Any?): String {
         return objectMapper!!.writeValueAsString(target)
+    }
+
+    protected fun login(username: String, password: String): String {
+        val loginRequest = LoginRequest(username, password)
+        val loginResult = mockMvc?.perform(
+            MockMvcRequestBuilders
+                .post("/v1/users/login")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(toJson(loginRequest))
+        )?.andReturn()
+
+        val stringLoginResponse = loginResult?.response?.contentAsString
+        val authResponse: ApiResponse? = objectMapper?.readValue(stringLoginResponse, ApiResponse::class.java)
+
+        return authResponse?.data as String
     }
 
     @PostConstruct

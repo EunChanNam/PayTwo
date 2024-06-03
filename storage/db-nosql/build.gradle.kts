@@ -3,8 +3,9 @@ dependencies {
     compileOnly(project(":domain"))
 
     // Spring
-    implementation("org.springframework.boot:spring-boot-starter")
-//    implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+    compileOnly("org.springframework.boot:spring-boot-starter")
+    //    implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+    implementation("org.springframework.boot:spring-boot-starter-data-redis")
 }
 
 configurations {

@@ -1,7 +1,7 @@
 val jwtVersion = "0.11.5"
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter")
+    compileOnly("org.springframework.boot:spring-boot-starter")
 
     // JWT
     implementation("io.jsonwebtoken:jjwt-api:$jwtVersion")

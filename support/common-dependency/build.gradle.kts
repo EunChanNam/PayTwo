@@ -1,5 +1,7 @@
 dependencies {
     compileOnly("org.springframework.boot:spring-boot-starter")
+
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
 }
 
 kotlin {

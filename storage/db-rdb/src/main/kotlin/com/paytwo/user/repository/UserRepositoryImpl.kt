@@ -11,10 +11,10 @@ class UserRepositoryImpl(
 
     override fun save(user: User): User {
         val userEntity = UserEntity(
-            user.name,
-            user.username,
-            user.password,
-            user.notificationEnabled
+            name = user.name,
+            username = user.username,
+            password = user.password,
+            notificationEnabled = user.notificationEnabled
         )
         userEntityRepository.save(userEntity)
 
@@ -23,5 +23,9 @@ class UserRepositoryImpl(
 
     override fun findByUsername(username: String): User? {
         return userEntityRepository.findByUsername(username)?.toDomain()
+    }
+
+    override fun findById(id: Long): User? {
+        return userEntityRepository.findUserEntityById(id)?.toDomain()
     }
 }
